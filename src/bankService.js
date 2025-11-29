@@ -1,7 +1,7 @@
 // Simulação de Banco de Dados em Memória
 const users = [
     { id: 1, name: 'Alice', balance: 1000 },
-    { id: 2, name: 'Bob', balance: 500 }
+    { id: 2, name: 'Bob', balance: 500}
 ];
 
 const bankService = {
