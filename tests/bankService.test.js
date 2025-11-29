@@ -15,4 +15,13 @@ describe('Bank Service API', () => {
          bankService.transfer(1, 3, 200);}).toThrow("Usuário não encontrado");
        
     });
+
+    test("Insufficient funds", () => {
+        expect(()=>{
+         bankService.transfer(2, 1, 2000);}).toThrow("Saldo insuficiente");
+    });
+    test("Negative or zero amounts not allowed", () => {
+        expect(()=>{
+         bankService.transfer(1, 2, -200);}).toThrow("Montante inválido");
+    });
 })
