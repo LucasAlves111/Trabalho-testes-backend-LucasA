@@ -1,6 +1,6 @@
 // Simulação de Banco de Dados em Memória
 const users = [
-    { id: 1, name: 'Alice', balance: 1000 },
+    { id: 1, name: 'Alice', balance: 1000},
     { id: 2, name: 'Bob', balance: 500}
 ];
 
@@ -18,8 +18,16 @@ const bankService = {
             throw new Error("Usuário não encontrado");
         }
 
-        sender.balance -= amount;
-        receiver.balance += amount;
+        if (amount <= 0) {
+            throw new Error("Montante inválido");
+        }
+
+      const senderBalance =   sender.balance -= amount;
+      receiver.balance += amount;
+
+        if (senderBalance < 0) {
+            throw new Error("Saldo insuficiente");
+        }
 
         return {
             success: true,
