@@ -4,10 +4,16 @@ const bankService = require('../src/bankService');
 
 
 describe('Bank Service API', () => {
-    test("Successful Transfer", async () => {
-        const response = await request(app).post('/transfer').send({
-            senderId: 1, receiverId: 2, amount: 200})
-        ;
-        expect(response.statusCode).toBe(200);
+    
+    test("Successful Transfer function", async () => {
+        const response =  bankService.transfer(1, 2, 200);
+        expect(response.success).toBe(true);
     })
+
+    test("Id not found", () => {
+        expect(()=>{
+         bankService.transfer(1, 3, 200);}).toThrow("Usuário não encontrado");
+     
+       
+    });
 })
